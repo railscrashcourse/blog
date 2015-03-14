@@ -3,3 +3,6 @@
 <blockquote>
   <%= comment.body %>
 </blockquote>
+
+<%= link_to 'Destroy', post_comment_path(comment.post, comment),
+      method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -9,6 +9,18 @@ class CommentsController < ApplicationController
     end 
   end
 
+  def destroy
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+
+    if @comment
+      @comment.destroy
+      redirect_to @post, notice: 'Comment was successfully destroyed.'
+    else
+      redirect_to @post, alert: 'Error destroying comment.'
+    end
+  end
+
   private
 
   def comment_params
